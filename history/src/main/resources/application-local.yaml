@@ -1,0 +1,27 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /api/history
+management:
+  server:
+    port: 8188
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/bank_history_service
+    username: postgres
+    password: root
+  liquibase:
+    default-schema: history.history
+    change-log: db/changelog/db.changelog-master.yaml
+    enabled: true
+    drop-first: false
+  application:
+    name: history-app
